@@ -1,4 +1,4 @@
-name: Docker
+name: Publish solr container w JTS
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -10,6 +10,8 @@ on:
     branches: [ "spatial-jts" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+  release:
+    types: [published]
   pull_request:
     branches: [ "spatial-jts" ]
 
@@ -34,6 +36,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: spatial-jts
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
